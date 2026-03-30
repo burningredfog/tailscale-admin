@@ -15,7 +15,6 @@
     },
     {
       "src": ["*"],
-      //test
       "dst": ["192.168.1.1"],
       "ip": ["*"]
     },
@@ -52,7 +51,7 @@
     {
       "target": ["100.116.193.78"],
       "attr": ["mullvad"],
-      "note": "OpenWrt router"
+      "note": "OpenWrt-router"
     },
     {
       "target": ["100.79.192.83"],
