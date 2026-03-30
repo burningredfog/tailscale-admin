@@ -1,0 +1,70 @@
+{
+  "tagOwners": {
+    "tag:mullvad-exit": ["autogroup:admin"]
+  },
+  "grants": [
+    {
+      "src": ["user:burningredfog@github"],
+      "dst": ["*"],
+      "ip": ["*"]
+    },
+    {
+      "src": ["*"],
+      "dst": ["*"],
+      "ip": ["*"]
+    },
+    {
+      "src": ["*"],
+      "dst": ["192.168.1.1"],
+      "ip": ["*"]
+    },
+    {
+      "src": ["*"],
+      "dst": ["tag:mullvad-exit"],
+      "ip": ["*"]
+    }
+  ],
+  "ssh": [
+    {
+      "action": "check",
+      "src": ["autogroup:member"],
+      "dst": ["autogroup:self"],
+      "users": ["autogroup:nonroot", "root"]
+    }
+  ],
+  "nodeAttrs": [
+    {
+      "target": ["100.104.44.74"],
+      "attr": ["mullvad"],
+      "note": "lenovot470s"
+    },
+    {
+      "target": ["100.80.197.117"],
+      "attr": ["mullvad"],
+      "note": "m910q-server"
+    },
+    {
+      "target": ["100.123.234.125"],
+      "attr": ["mullvad"],
+      "note": "dellStudioDaw"
+    },
+    {
+      "target": ["100.116.193.78"],
+      "attr": ["mullvad"],
+      "note": "OpenWrt router"
+    },
+    {
+      "target": ["100.79.192.83"],
+      "attr": ["mullvad"],
+      "note": "realme-rmx2155"
+    },
+    {
+      "target": ["autogroup:member"],
+      "attr": ["funnel"],
+      "note": "Funnel policy – tailnet members"
+    }
+  ],
+  "autoApprovers": {
+    "exitNode": []
+  }
+}
