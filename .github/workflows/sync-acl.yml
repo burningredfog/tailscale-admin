@@ -1,0 +1,19 @@
+name: Sync Tailscale ACL
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'config/tailscale-acl.json'
+
+jobs:
+  sync-acl:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sync Tailscale ACLs
+        uses: tailscale/sync-acls@v1
+        with:
+          api-key: ${{ secrets.TAILSCALE_API_KEY }}
+          tailnet: burningredfog.github
+          file: config/tailscale-acl.json
