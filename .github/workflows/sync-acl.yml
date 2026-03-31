@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Sync Tailscale ACLs
-        uses: tailscale/github-action-acl-sync@v1
-        with:
-          api-key: ${{ secrets.TAILSCALE_API_KEY }}
-          tailnet: burningredfog.github
-          file: config/tailscale-acl.json
+      - name: Upload ACL to Tailscale API
+        run: |
+          curl -X POST "https://api.tailscale.com/api/v2/tailnet/burningredfog.github/acl" \
+            -H "Authorization: Bearer ${{ secrets.TAILSCALE_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            --data-binary @config/tailscale-acl.json
