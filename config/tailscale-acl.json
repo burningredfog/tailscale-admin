@@ -63,7 +63,7 @@
 			"attr": ["mullvad"],
 		},
 		{
-			// OpenWrt router
+			//  OpenWrt 25.12.1 -router
 			"target": ["100.116.193.78"],
 
 			"attr": ["mullvad"],
