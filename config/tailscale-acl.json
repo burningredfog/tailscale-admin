@@ -1,70 +1,89 @@
+
 {
-  "tagOwners": {
-    "tag:mullvad-exit": ["autogroup:admin"]
-  },
-  "grants": [
-    {
-      "src": ["user:burningredfog@github"],
-      "dst": ["*"],
-      "ip": ["*"]
-    },
-    {
-      "src": ["*"],
-      "dst": ["*"],
-      "ip": ["*"]
-    },
-    {
-      "src": ["*"],
-      "dst": ["192.168.1.1"],
-      "ip": ["*"]
-    },
-    {
-      "src": ["*"],
-      "dst": ["tag:mullvad-exit"],
-      "ip": ["*"]
-    }
-  ],
-  "ssh": [
-    {
-      "action": "check",
-      "src": ["autogroup:member"],
-      "dst": ["autogroup:self"],
-      "users": ["autogroup:nonroot", "root"]
-    }
-  ],
-  "nodeAttrs": [
-    {
-      "target": ["100.104.44.74"],
-      "attr": ["mullvad"],
-      "note": "lenovot470s"
-    },
-    {
-      "target": ["100.80.197.117"],
-      "attr": ["mullvad"],
-      "note": "m910q-server"
-    },
-    {
-      "target": ["100.123.234.125"],
-      "attr": ["mullvad"],
-      "note": "dellStudioDaw"
-    },
-    {
-      "target": ["100.116.193.78"],
-      "attr": ["mullvad"],
-      "note": "OpenWrt-router"
-    },
-    {
-      "target": ["100.79.192.83"],
-      "attr": ["mullvad"],
-      "note": "realme-rmx2155"
-    },
-    {
-      "target": ["autogroup:member"],
-      "attr": ["funnel"],
-      "note": "Funnel policy – tailnet members"
-    }
-  ],
-  "autoApprovers": {
-    "exitNode": []
-  }
+	
+	// Define the tags which can be applied to devices and by which users.
+	"tagOwners": {"tag:mullvad-exit": ["autogroup:admin"]},
+
+	// Define grants that govern access for users, groups, autogroups, tags,
+	// Tailscale IP addresses, and subnet ranges.
+	"grants": [
+		// Allow all connections.
+		// Comment this section out if you want to define specific restrictions.
+		{
+			"src": ["user:burningredfog@github"],
+			"dst": ["*"],
+			"ip":  ["*"],
+		},
+		{
+			"src": ["*"],
+			"dst": ["*"],
+			"ip":  ["*"],
+		},
+		{
+			"src": ["*"],
+			"dst": ["192.168.1.1"],
+			"ip":  ["*"],
+		},
+		{
+			"src": ["*"],
+			"dst": ["tag:mullvad-exit"],
+			"ip":  ["*"],
+		},
+	],
+
+	// Define users and devices that can use Tailscale SSH.
+	"ssh": [
+		// Allow all users to SSH into their own devices in check mode.
+		// Comment this section out if you want to define specific restrictions.
+		{
+			"action": "check",
+			"src":    ["autogroup:member"],
+			"dst":    ["autogroup:self"],
+			"users":  ["autogroup:nonroot", "root"],
+		},
+	],
+
+	"nodeAttrs": [
+		{
+			// lenovot470s
+			"target": ["100.104.44.74"],
+
+			"attr": ["mullvad"],
+		},
+		{
+			// m910q-server
+			"target": ["100.80.197.117"],
+
+			"attr": ["mullvad"],
+		},
+		{
+			// dellStudioDaw
+			"target": ["100.123.234.125"],
+
+			"attr": ["mullvad"],
+		},
+		{
+			// OpenWrt router
+			"target": ["100.116.193.78"],
+
+			"attr": ["mullvad"],
+		},
+		{
+			// realme-rmx2155
+			"target": ["100.79.192.83"],
+
+			"attr": ["mullvad"],
+		},
+		{
+			// Funnel policy, which lets tailnet members control Funnel
+			// for their own devices.
+			// Learn more at https://tailscale.com/kb/1223/tailscale-funnel/
+			"target": ["autogroup:member"],
+
+			"attr": ["funnel"],
+		},
+	],
+
+	"autoApprovers": {"exitNode": []},
+
 }
